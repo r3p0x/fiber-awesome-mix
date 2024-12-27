@@ -25,7 +25,7 @@ export default function Scene() {
         intensity={5}
       />
       <axesHelper />
-      <PerspectiveCamera position={[2,2,2]} makeDefault />
+      <PerspectiveCamera position={[8,8,8]} makeDefault />
       <Tree />
       <Area />
       <OrbitControls />

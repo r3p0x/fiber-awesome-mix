@@ -1,0 +1,21 @@
+{
+  "root": true,
+  "extends": ["custom"],
+  "rules": {
+    "import/no-unused-modules": [
+      2,
+      {
+        "unusedExports": true,
+        "ignoreExports": [
+          "**/middleware.ts",
+          "**/page.tsx",
+          "**/layout.tsx",
+          "**/not-found.tsx",
+          "**/global-error.tsx",
+          "**/route.ts",
+          "__mocks__/*"
+        ]
+      }
+    ]
+  }
+}

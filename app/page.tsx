@@ -1,3 +1,5 @@
+'use client'
+
 import Toolbar from "@/components/ui/Toolbar"
 import dynamic from "next/dynamic"
 
@@ -6,8 +8,8 @@ const Scene = dynamic(() => import("@/components/Scene"), { ssr: false })
 export default function Home() {
   return (
     <main className="h-full">
-      <Scene />
-      <Toolbar />
+        <Scene />
+        <Toolbar />
     </main>
   )
 }
