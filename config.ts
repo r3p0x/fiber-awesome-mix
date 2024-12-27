@@ -40,89 +40,25 @@ export const CONFIG: Config = {
       id: 0,
       type: 'tree',
       position: {
-        x: Math.round(Math.random() * LENGTH),
-        z: Math.round(Math.random() * WIDTH),
+        x: Math.round(Math.random() * LENGTH - LENGTH / 2),
+        z: Math.round(Math.random() * WIDTH - WIDTH / 2),
       },
     },
-    // {
-    //   id: 1,
-    //   type: 'tree',
-    //   position: {
-    //     x: Math.round(Math.random() * LENGTH),
-    //     z: Math.round(Math.random() * WIDTH),
-    //   },
-    // },
-    // {
-    //   id: 2,
-    //   type: 'tree',
-    //   position: {
-    //     x: Math.round(Math.random() * LENGTH),
-    //     z: Math.round(Math.random() * WIDTH),
-    //   },
-    // },
-    // {
-    //   id: 3,
-    //   type: 'tree',
-    //   position: {
-    //     x: Math.round(Math.random() * LENGTH),
-    //     z: Math.round(Math.random() * WIDTH),
-    //   },
-    // },
-    // {
-    //   id: 4,
-    //   type: 'tree',
-    //   position: {
-    //     x: Math.round(Math.random() * LENGTH),
-    //     z: Math.round(Math.random() * WIDTH),
-    //   },
-    // },
-    // {
-    //   id: 5,
-    //   type: 'tree',
-    //   position: {
-    //     x: Math.round(Math.random() * LENGTH),
-    //     z: Math.round(Math.random() * WIDTH),
-    //   },
-    // },
-    // {
-    //   id: 6,
-    //   type: 'tree',
-    //   position: {
-    //     x: Math.round(Math.random() * LENGTH),
-    //     z: Math.round(Math.random() * WIDTH),
-    //   },
-    // },
-    // {
-    //   id: 7,
-    //   type: 'tree',
-    //   position: {
-    //     x: Math.round(Math.random() * LENGTH),
-    //     z: Math.round(Math.random() * WIDTH),
-    //   },
-    // },
-    // {
-    //   id: 8,
-    //   type: 'tree',
-    //   position: {
-    //     x: Math.round(Math.random() * LENGTH),
-    //     z: Math.round(Math.random() * WIDTH),
-    //   },
-    // },
-    // {
-    //   id: 9,
-    //   type: 'tree',
-    //   position: {
-    //     x: Math.round(Math.random() * LENGTH),
-    //     z: Math.round(Math.random() * WIDTH),
-    //   },
-    // },
-    // {
-    //   id: 10,
-    //   type: 'tree',
-    //   position: {
-    //     x: Math.round(Math.random() * LENGTH),
-    //     z: Math.round(Math.random() * WIDTH),
-    //   },
-    // },
+    {
+      id: 1,
+      type: 'tree',
+      position: {
+        x: Math.round(Math.random() * LENGTH - LENGTH / 2),
+        z: Math.round(Math.random() * WIDTH - WIDTH / 2),
+      },
+    },
+    {
+      id: 2,
+      type: 'tree',
+      position: {
+        x: Math.round(Math.random() * LENGTH - LENGTH / 2),
+        z: Math.round(Math.random() * WIDTH - WIDTH / 2),
+      },
+    },
   ],
 }

@@ -12,7 +12,13 @@ export default function Scene() {
 
   const renderTrees = () => {
     const objects = CONFIG.objects.map((object) => {
-      return <Tree key={object.id} setDragging={setDragging} />
+      return (
+        <Tree
+          key={object.id}
+          setDragging={setDragging}
+          defaultPosition={{ x: object.position.x, z: object.position.z }}
+        />
+      )
     })
     return <>{objects}</>
   }

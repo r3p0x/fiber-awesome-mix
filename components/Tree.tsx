@@ -5,12 +5,20 @@ import { Vector3 } from 'three'
 
 const SCALE = 0.75
 
-export const Tree = ({
-  setDragging,
-}: {
+type Props = {
   setDragging: (isDragging: boolean) => void
-}) => {
-  const [position, setPosition] = useState<Vector3>(new Vector3(0, 1, 0)) // Initial position [x, y, z]
+  defaultPosition: {
+    x: number
+    z: number
+  }
+}
+
+export const Tree = (props: Props) => {
+  const { setDragging, defaultPosition } = props
+
+  const [position, setPosition] = useState<Vector3>(
+    new Vector3(defaultPosition.x, 1, defaultPosition.z)
+  ) // Initial position [x, y, z]
 
   // Use the useDrag hook
   const bind = useDrag(({ offset: [x, z], down }) => {
@@ -23,7 +31,7 @@ export const Tree = ({
     <group {...bind()} scale={[SCALE, SCALE, SCALE]} position={position}>
       {/* Tree Trunk */}
       <mesh castShadow>
-        <cylinderGeometry args={[0.2, 0.3, 3, 32]} />{' '}
+        <cylinderGeometry args={[0.2, 0.3, 3, 32]} />
         {/* Adjusted trunk for a rounder look */}
         <meshStandardMaterial color="brown" />
       </mesh>
