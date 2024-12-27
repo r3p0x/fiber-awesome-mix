@@ -36,3 +36,12 @@ body {
     text-wrap: balance;
   }
 }
+
+.toolbar {
+  background-color: #2e2e2e;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 8px;
+  border-radius: 8px;
+}
