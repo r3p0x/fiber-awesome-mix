@@ -1,20 +1,38 @@
-const SCALE = 0.5
+import { CONFIG } from '@/config'
+import { useDrag } from '@use-gesture/react'
+import { useState } from 'react'
+import { Vector3 } from 'three'
 
-export const Tree = () => {
-    return (
-      <group scale={[SCALE, SCALE, SCALE]} position={[0, 1.5 * SCALE, 0]}>
+const SCALE = 0.75
 
-        {/* Tree Trunk */}
-        <mesh castShadow>
-            <cylinderGeometry args={[0.2, 0.3, 3, 32]} /> {/* Adjusted trunk for a rounder look */}
-            <meshStandardMaterial color="brown" />
-        </mesh>
+export const Tree = ({
+  setDragging,
+}: {
+  setDragging: (isDragging: boolean) => void
+}) => {
+  const [position, setPosition] = useState<Vector3>(new Vector3(0, 1, 0)) // Initial position [x, y, z]
 
-        {/* Leaves - Middle layer */}
-        <mesh castShadow position={[0, 2, 0]}>
-            <sphereGeometry args={[1.8, 16, 16]} /> {/* Smaller, but still round */}
-          <meshStandardMaterial color="green" />
-        </mesh>
-      </group>
-    );
-};
+  // Use the useDrag hook
+  const bind = useDrag(({ offset: [x, z], down }) => {
+    setPosition(new Vector3(x / 10, 1, z / 10)) // Update position based on drag offset
+    setDragging(down)
+  })
+
+  return (
+    // @ts-ignore
+    <group {...bind()} scale={[SCALE, SCALE, SCALE]} position={position}>
+      {/* Tree Trunk */}
+      <mesh castShadow>
+        <cylinderGeometry args={[0.2, 0.3, 3, 32]} />{' '}
+        {/* Adjusted trunk for a rounder look */}
+        <meshStandardMaterial color="brown" />
+      </mesh>
+
+      {/* Leaves - Middle layer */}
+      <mesh castShadow position={[0, 2, 0]}>
+        <sphereGeometry args={[1.8, 16, 16]} /> {/* Smaller, but still round */}
+        <meshStandardMaterial color="green" />
+      </mesh>
+    </group>
+  )
+}
