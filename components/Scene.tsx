@@ -6,9 +6,11 @@ import Area from './Area'
 import { Tree } from './Tree'
 import { CONFIG } from '@/config'
 import React from 'react'
+import { Selection, EffectComposer, Outline } from '@react-three/postprocessing'
 
 export default function Scene() {
   const [dragging, setDragging] = React.useState(false) // State to track dragging
+  const [selected, setSelected] = React.useState<boolean>(true) // State to track dragging
 
   const renderTrees = () => {
     const objects = CONFIG.objects.map((object) => {
@@ -53,9 +55,21 @@ export default function Scene() {
       />
       <axesHelper />
       <PerspectiveCamera position={[8, 8, 8]} makeDefault />
-      {renderTrees()}
+
       <Area />
       <OrbitControls enabled={!dragging} />
+      <Selection>
+        <EffectComposer multisampling={8} autoClear={false}>
+          <Outline
+            blur
+            edgeStrength={100}
+            // @ts-ignore
+            visibleEdgeColor="white"
+            width={1000}
+          />
+          {renderTrees()}
+        </EffectComposer>
+      </Selection>
     </Canvas>
   )
 }
