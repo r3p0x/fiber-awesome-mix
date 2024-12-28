@@ -1,6 +1,4 @@
-import { CONFIG } from '@/config'
-import { useFrame } from '@react-three/fiber'
-import { EffectComposer, Select } from '@react-three/postprocessing'
+import { Select } from '@react-three/postprocessing'
 import { useDrag } from '@use-gesture/react'
 import { useRef, useState } from 'react'
 import { Vector3 } from 'three'
