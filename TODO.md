@@ -10,7 +10,7 @@
 ## Bugs
 
 - [ ] Bug: Fix the issue that dragging depends on the camera position, where objects move the wrong direction
-- [ ] improve lighting so that it properly scales with the scene and area size
+- [x] improve lighting so that it properly scales with the scene and area size
 
 ## Highlight and Infos
 

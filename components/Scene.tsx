@@ -1,30 +1,17 @@
 'use client'
 
+import React from 'react'
+
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei'
+
 import Area from './Area'
-import { Tree } from './Tree'
-import { CONFIG } from '@/config'
-import React from 'react'
-import { Selection, EffectComposer, Outline } from '@react-three/postprocessing'
 import Lights from './lights/Lights'
+import Object from './Object'
+import { useGlobalState } from '@/context/GlobalStateContext'
 
 export default function Scene() {
-  const [dragging, setDragging] = React.useState(false) // State to track dragging
-  const [selected, setSelected] = React.useState<boolean>(true) // State to track dragging
-
-  const renderTrees = () => {
-    const objects = CONFIG.objects.map((object) => {
-      return (
-        <Tree
-          key={object.id}
-          setDragging={setDragging}
-          defaultPosition={{ x: object.position.x, z: object.position.z }}
-        />
-      )
-    })
-    return <>{objects}</>
-  }
+  const { state } = useGlobalState()
 
   return (
     <Canvas
@@ -32,25 +19,14 @@ export default function Scene() {
       gl={{ antialias: true }}
       dpr={[1, 1.5]}
       className="relative h-svh"
-      color="red"
     >
       <axesHelper />
       <PerspectiveCamera position={[8, 8, 8]} makeDefault />
+      <OrbitControls enabled={!state.isDragging} />
       <Lights />
       <Area />
-      <OrbitControls enabled={!dragging} />
-      <Selection>
-        <EffectComposer multisampling={8} autoClear={false}>
-          <Outline
-            blur
-            edgeStrength={100}
-            // @ts-ignore
-            visibleEdgeColor="white"
-            width={1000}
-          />
-          {renderTrees()}
-        </EffectComposer>
-      </Selection>
+      <Object id={1} position={{ x: 1, z: 1 }} type="tree" />
+      <Object id={2} position={{ x: 4, z: 4 }} type="tree" />
     </Canvas>
   )
 }

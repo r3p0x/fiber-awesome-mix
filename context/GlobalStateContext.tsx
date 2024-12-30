@@ -7,6 +7,8 @@ import React, { createContext, useContext, useState, ReactNode } from 'react'
 interface State {
   length: number
   width: number
+  selected: number | null
+  isDragging: boolean
 }
 
 // Create the context
@@ -20,6 +22,8 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   const [state, setState] = useState<State>({
     length: CONFIG.area.length,
     width: CONFIG.area.width,
+    selected: 1,
+    isDragging: false,
   })
 
   return (
